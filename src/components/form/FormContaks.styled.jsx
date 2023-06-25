@@ -12,7 +12,7 @@ export const FormInput = styled(Field)`
 `;
 
 export const StyledForm = styled(Form)`
-  border: 1px solid black;
+  border: 2px solid blue;
   display: inline-block;
   padding: 20px;
   text-align: center;
