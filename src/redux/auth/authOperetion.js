@@ -68,14 +68,14 @@ export const refreshUser = createAsyncThunk(
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (credentials, thunkAPI) => {
+  async (credentials, {rejectWithValue}) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await axios.post('/users/signup', {credentials});
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -86,14 +86,14 @@ export const register = createAsyncThunk(
 //  */
 export const login = createAsyncThunk(
   'auth/login',
-  async (credentials, thunkAPI) => {
+  async (credentials, {rejectWithValue}) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await axios.post('/users/login', {credentials});
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
